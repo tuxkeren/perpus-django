@@ -1,11 +1,22 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from perpustakaan.views import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls.static import static
+from perpustakaan.viewset_api import *
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register('buku', BukuViewset)
+
 
 
 urlpatterns = [
+
+    # url untuk halaman API
+    path('api/', include(router.urls)),
+
    
     # url untuk halaman Admin
     path('admin/', admin.site.urls),
@@ -39,6 +50,7 @@ urlpatterns = [
 
     # url untuk laporan
     path('export/xls/', export_xls, name='export_xls'),
+
     
 ]
 
