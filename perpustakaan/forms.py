@@ -6,7 +6,6 @@ class FormBuku(ModelForm):
     class Meta:
         model = Buku
         fields = '__all__'
-        exclude =['cover']
         widgets = {
             'judul'   : forms.TextInput({'class': 'form-control'}),
             'penulis' : forms.TextInput({'class': 'form-control'}),

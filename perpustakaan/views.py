@@ -50,7 +50,7 @@ def buku(request):
 @login_required(login_url=settings.LOGIN_URL)
 def tambah_buku(request):
     if request.POST:
-        form = FormBuku(request.POST)
+        form = FormBuku(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             form = FormBuku()
@@ -76,7 +76,7 @@ def ubah_buku(request, id_buku):
     buku = Buku.objects.get(id=id_buku)
     template = 'buku/buku-ubah.html'
     if request.POST:
-        form = FormBuku(request.POST, instance=buku)
+        form = FormBuku(request.POST, request.FILES, instance=buku)
         if form.is_valid():
             form.save()
             messages.success(request, 'Data buku berhasil diubah')
