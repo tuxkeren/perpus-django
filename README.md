@@ -1,5 +1,5 @@
 Langkah-langkah menjalakan awal:
-- install Python dari www.python.org
+- install Python versi 3 dari www.python.org
 - Install virtual environment dengan perintah: pip install virtualenv
 - Buat folder python virtual environment dengan perintah: virtualenv PERPUS
 - cd PERPUS
@@ -8,6 +8,7 @@ Langkah-langkah menjalakan awal:
 - pip install djangorestframework
 - pip install pillow
 - pip install django-import-export
+- pip install "tablib[xlsx]"
 - git clone repository ini
 - setelah selesai, cd perpus
 - jalankan perintah: py.exe manage.py makemigrations
