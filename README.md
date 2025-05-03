@@ -1,0 +1,16 @@
+Langkah-langkah menjalakan awal:
+- install Python dari www.python.org
+- Install virtual environment dengan perintah: pip install virtualenv
+- Buat folder python virtual environment dengan perintah: virtualenv PERPUS
+- cd PERPUS
+- Script\Activate (jika pake Windows) atau source bin/activate (Jika pake Linux dan MacOS)
+- pip install django==2.2.1
+- pip install djangorestframework
+- git clone repository ini
+- setelah selesai, cd perpus
+- jalankan perintah: py.exe manage.py makemigrations
+- Jalankan perintah: py.exe manage.py migrate
+- Jalankan perintah: py.exe manage.py createsuperuser (ikut saja apa yang diminta)
+- Selesai.
+- Untuk menjalankan program, jalankan perintah: py.exe manage.py runserver
+- Silahkan explore lebih lanjut dan sempurnakan.
