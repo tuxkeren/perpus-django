@@ -53,6 +53,7 @@ urlpatterns = [
     path('penerbit/ubah/<int:id_penerbit>', ubah_penerbit, name='ubah_penerbit'),
     path('penerbit/hapus/<int:id_penerbit>', hapus_penerbit, name='hapus_penerbit'),
 
+
     # url untuk laporan
     path('export/xls/', export_xls, name='export_xls'),
 
