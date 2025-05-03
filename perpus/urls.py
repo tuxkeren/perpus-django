@@ -9,6 +9,8 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('buku', BukuViewset)
+router.register('kelompok', KelompokViewset)
+router.register('penerbit', PenerbitViewset)
 
 
 
