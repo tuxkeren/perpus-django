@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h1>Perpustakaan</h1>
+                </center>
+                <h3>Data Penerbit Buku</h3>
+                <a href="{% url 'tambah_penerbit' %}" class="btn btn-sm btn-primary">Tambah Penerbit</a>
+                <br/><br/>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr> 
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for penerbit in publishers %}
+                            <tr>
+                                <td><a href="{% url 'ubah_penerbit' penerbit.id %}">{{ penerbit.nama }}</a></td>
+                                <td>{{ penerbit.alamat }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h1>Perpustakaan</h1>
+                    <a href="{{ url 'keluar'}}">{{ user }}</a>
+                </center>
+                <h3>Data Buku</h3>
+                <a href="{% url 'tambah_buku' %}" class="btn btn-sm btn-primary">Tambah Buku</a>
+                <br/><br/>
+
+                {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-danger" role="alert">{{ message }}</div>
+                    {% endif %}
+                {% endfor%}
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th>Penerbit</th>
+                            <th>Jumlah</th>
+                            <th>kelompok</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for buku in books %}
+                            <tr>
+                                <td><img src="{{ buku.cover }}"></td>
+                                <td><a href="{% url 'ubah_buku' buku.id %}">{{ buku.judul }}</a></td>
+                                <td>{{ buku.penulis }}</td>
+                                <td>{{ buku.penerbit }}</td>
+                                <td>{{ buku.jumlah }}</td>
+                                <td>{{ buku.kelompok }}</td>
+                                <td>
+                                   <button data-toggle="modal" data-target="#hapus-{{ buku.id }}" class="btn btn-sm btn-danger">Hapus</button> 
+                                </td>
+
+                                <div class="modal" id="hapus-{{ buku.id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="modal-title">
+                                                    <h6>Hapus buku berjudul:  <strong>{{ buku.judul | upper }}</strong></h6>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                 Apakah kamu yakin ingin menghapusnya?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{% url 'hapus_buku' buku.id %}" class="btn btn-sm btn-danger">Ya</a>
+                                                <button class="btn btn-sm btn-dark" data-dismiss="modal">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

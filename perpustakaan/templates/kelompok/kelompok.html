@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h1>Perpustakaan</h1>
+                </center>
+                <h3>Data Kelompok Buku</h3>
+                <a href="{% url 'tambah_kelompok' %}" class="btn btn-sm btn-primary">Tambah Kelompok</a>
+                <br/><br/>
+
+                 {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-danger" role="alert">{{ message }}</div>
+                    {% endif %}
+                {% endfor%}
+                
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr> 
+                            <th>Nama</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for kelompok in groups %}
+                            <tr>
+                                <td><a href="{% url 'ubah_kelompok' kelompok.id %}">{{ kelompok.nama }}</a></td>
+                                <td>{{ kelompok.keterangan }}</td>
+                                <td><button data-toggle="modal" data-target="#hapus-{{ kelompok.id }}" class="btn btn-sm btn-danger">Hapus</button> </td>
+
+                                <div class="modal" id="hapus-{{ kelompok.id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="modal-title">
+                                                    <h6>Hapus Kelompok bernama:  <strong>{{ kelompok.nama | upper }}</strong></h6>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                 Apakah kamu yakin ingin menghapusnya?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{% url 'hapus_kelompok' kelompok.id %}" class="btn btn-sm btn-danger">Ya</a>
+                                                <button class="btn btn-sm btn-dark" data-dismiss="modal">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
