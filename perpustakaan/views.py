@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 
-# ========
+# =========================
 # Logic program untuk Buku
-# ========
+# =========================
 
 # List all Buku
 @login_required(login_url=settings.LOGIN_URL)
@@ -78,9 +78,9 @@ def hapus_buku(request, id_buku):
     return redirect('buku')
 
 
-# ========
+# =============================
 # Logic program untuk Kelompok
-# ========
+# =============================
 
 # List all Kelompok
 @login_required(login_url=settings.LOGIN_URL)
@@ -152,9 +152,9 @@ def hapus_kelompok(request, id_kelompok):
     return redirect('kelompok')
 
 
-# ========
+# =============================
 # Logic program untuk Penerbit
-# ========
+# =============================
 
 # List all Penerbit
 @login_required(login_url=settings.LOGIN_URL)
