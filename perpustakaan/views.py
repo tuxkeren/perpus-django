@@ -1,11 +1,35 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm 
+from django.conf import settings
 from perpustakaan.models import *
 from perpustakaan.forms import *
-from django.contrib.auth.decorators import login_required
-from django.conf import settings
 
+
+# =====================================
+# Logic program untuk daftar User baru
+# =====================================
+
+@login_required(login_url=settings.LOGIN_URL)
+def signup(request):
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "User berhasil didaftarkan!")
+            return redirect('signup')
+        else:
+            messages.error(request, "Ada yang salah!")
+            return redirect('signup')
+    else:
+        form = UserCreationForm()
+        konteks = {
+            'form':form,
+        }
+
+    return render(request, 'registration/signup.html', konteks)
+        
 
 # =========================
 # Logic program untuk Buku

@@ -22,7 +22,8 @@ class Buku(models.Model):
     penerbit = models.ForeignKey(Penerbit, on_delete=models.CASCADE, null=True)
     jumlah = models.IntegerField(null=True)
     kelompok = models.ForeignKey(Kelompok, on_delete=models.CASCADE, null=True)
-    cover = models.CharField(max_length=255, null=True)
+    cover = models.ImageField(upload_to='cover/', null=True)
+    tanggal = models.DateTimeField(auto_now_add=True, null=True)
     
     def __str__(self):
         return self.judul

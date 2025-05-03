@@ -11,9 +11,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 
-    # untuk halaman Login dan Logout
+    # untuk halaman Login, Logout, dan Signup
     path('masuk/', LoginView.as_view(), name='masuk'),
     path('keluar/', LogoutView.as_view(next_page='masuk'), name='keluar'),
+    path('signup/', signup, name='signup'),
 
 
     # url untuk Buku
