@@ -1,11 +1,29 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm 
 from django.conf import settings
 from perpustakaan.models import *
 from perpustakaan.forms import *
+from perpustakaan.resource import BukuResource
 
+
+# ============================
+# Logic program untuk laporan
+# ============================
+
+# export ke Excel
+def export_xls(request):
+    buku = BukuResource()
+    dataset = buku.export()
+    # Ini error
+    # response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    # response['Content-Disposition'] = 'attachment; filename="laporan buku.xls"'
+    # solusi dari CoPilot AI
+    response = HttpResponse(dataset.export('xlsx'), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="laporan_buku.xlsx"'
+
+    return response
 
 # =====================================
 # Logic program untuk daftar User baru

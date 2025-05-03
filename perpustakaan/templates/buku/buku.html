@@ -7,6 +7,7 @@
             <div class="col-md-12">
                 <h3>Data Buku</h3>
                 <a href="{% url 'tambah_buku' %}" class="btn btn-sm btn-primary">Tambah Buku</a>
+                <a href="{% url 'export_xls' %}" class="btn btn-sm btn-success">Export .xls</a>
                 <br/><br/>
 
                 {% for message in messages %}

@@ -6,6 +6,8 @@ Langkah-langkah menjalakan awal:
 - Script\Activate (jika pake Windows) atau source bin/activate (Jika pake Linux dan MacOS)
 - pip install django==2.2.1
 - pip install djangorestframework
+- pip install pillow
+- pip install django-import-export
 - git clone repository ini
 - setelah selesai, cd perpus
 - jalankan perintah: py.exe manage.py makemigrations
