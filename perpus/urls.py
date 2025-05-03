@@ -23,6 +23,9 @@ urlpatterns = [
     # url untuk halaman Admin
     path('admin/', admin.site.urls),
 
+    # url untuk halaman Index
+    #path('', buku, name='index'),
+
 
     # untuk halaman Login, Logout, dan Signup
     path('masuk/', LoginView.as_view(), name='masuk'),
